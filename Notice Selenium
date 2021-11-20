@@ -1,0 +1,199 @@
+                       
+
+                         Note for Selenium 2
+
+
+1 - Front end developer - developers are using Angular/React framework(HTML,Javascript, CSS, Bootstrap)
+2 - Back end developer - they are developing (most using) API - Spring framework(Java)
+3 - Full stack developer - can same time both (it means can back end front end)
+4 - Full stack SDET --> it means can test both (can testing back and front end)
+    * API testing more faster than UI more reliable also more easy
+
+======================================================================================
+
+Selenium
+
+Primarily it is for automating web applications for testing purposes, but is certainly not limited to just that.
+*Web application --> website 
+*Automation
+
+Selenium is not just only testing tool. Some of developers use thing to some functionality or navgating page etc.(it just only us testers also use developers too)
+
+
+Applications 
+
+- Web application (website- example slack) --> Selenium can only test the web application. 
+- Standalone (or Desktop) application(app are in my computer) - watir, test complete (testing tool)
+- Mobile application (IOS, Android(belong to Google)) --> Appium is not directly to the Selenium but it 
+  is working like Selenium(mobile app testing tool)
+
+Dev Enviroment - Test ENVIROMENT - pre-Prod(Stanging) Env - Production 
+*Dev Enviroment when developers build the code then they are tested. After thats completed Test 
+ Enviroment then testers gonna tested. After that Staging Enviroment, it's gonna we tested before product reliased(we are just right before production check for really working well). After that we are push the code to this production Enviroment. But every company Enviroments are different(example wallmart has 6 different Enviroment).
+
+Selenium Disadvantages (Limitations)
+
+1 - Selenium can not automate the captcha.(when you login to the pages they are asking to the selec to 
+    the pic (select all bridge, select all mountain etc)or ask to letters and number to type. That is called captcha. So Selenium can't automate that captcha. So how we gonna test then? so Disable to captcha then we continue testing(WE are testing manual captcha then continue automating tested. That is called Disable to captcha)).
+2 - Selenium can not automate the pictures. - (Applitools automating pictures). We have to first 
+    integrate frame work.
+3 - Selenium has no call center.
+4 - Selenium doesn't have the reporting. We have to use third party tools to reported.(TestNG, Extends
+    report, Cucumber HTML report ect). But reporting is important to us. 
+5 - Selenium automate only web apps
+
+Advantages of Selenium
+
+1 - Selenium is free tool
+2 - Selenium is open source tool
+3 - Selenium has big community
+4 - Selenium support multiple browsers(Google Chrome, Firefox, Safari, Edge, Opera) Cross-browser testing
+5 - Selenium support multiple coding language (C#, Ruby, Java, Phython, Javascript)
+
+Types of Selenium 
+1 - Selenium RC (Remote Control) -> The application is stored in the server and automation happening in 
+    the server itself.
+2 - Selenium IDE () -> (I need to download one plug in browser. Then record your process for testing and 
+    then play that testing)Selenium IDE is a plugin for the browser that can record the and then you can 
+    play it.(If you want run your test again just press play button It will do whatever I created it will play that one more again automaticly)
+    * it is not reliable(it means easyle broke)
+    * it can not wait for web element(it means when my page loading more longer it will be not wait and failed. That is why we not use it's itself)
+3 - Selenium WebDriver -> it is one library that we can add to our project (Java) and start using the 
+    ready class(example Selenium don't have a String so when we add the Java I can use that method on my Selenium project). We should add "jar files" (multiply java files) to our project.
+4 - Selenium Grid => It will help us to run our automation script in different servers(browser). We can 
+    achievve parallel testing and cross browser testing using selenium grid(it means paralel testing).
+    * Example: 400 test cases --> 4 hours to run --> but we can divided that cases different server(
+      coms) and safe our time. 4 different com divided by 4 and spend only 1 hour. 
+    * EC2 machine in AWS(Amazon Web Services). We use EC2 matchine divide our test case different coms 
+      and run same time
+
+
+========================================================================================================
+
+
+Cypress VS  Selenium
+    
+    *Cypress--> is resently tools on the market(some of the company using)web testing tool. It is 
+     supported few browser(only 3 browser. chrome, firefox, edge). It is not much big community.
+
+1 - When I started my career the company was using the Selenium that's why I am feeling more confident
+2 - Selenium has more community that Cypress
+3 - Since Cypress is new tools, when I search the problems that I faced I could not find detailed 
+    information
+4 - Selenium support more coding languages than Cypress
+5 - Selenium support more browser than Cypress
+
+=====================================================================================================
+
+Management tools:
+
+* Selenium Java >> there has different management tools:
+                 "Maven, Gradle, Gradle(Short), Gradle(Kotlin), SBT, Ivy, Gape, Leiningen, Buildr"
+
+* Maven vs Gradle (50/50% use the company)
+
+* some company use Maven some company use Gradle
+* implemention is same
+* Maven has a POM>XML file Gradle has a Gradle file
+* stored dependencies
+=====================================================================================================
+MAVEN
+
+Maven is one of the project management tool that I can centralize my dependencies in one location.
+  * Dependencies --> it means Selenuim is one of the dependence our project. Project it self base on the 
+    Java. (TestNG, Cucumber, Junit etc all of them stored under the "Dependencies". And all my dependencies under the one packege). We use this metology use the all the time and every where use that centralize.
+  * Centralize --> it means when we change or update the information we have to change every codes. So   
+    instead of that we create the one base method then just change that base method than rest of all dependences(codes) automaticly changed. It is a "centralize" it is very important and save time. 
+  * Example:
+     String baseUrl="www.techtorial.com/"
+    "ww.techtorial.com/about"       instead of that      baseUrl+"aboutus"
+    "ww.techtorial.com/contactus"   instead of that      baseUrl+"contactus"
+    "ww.techtorial.com/apply"       instead of that      baseUrl+"apply"
+    "ww.techtorial.com/courses"     instead of that      baseUrl+"courses"
+  * That is why Maven project use POM>XML file.
+
+POM.XML file
+  
+  * POM(project object model) XML
+  * It is extend for "XML" markup language
+  * Every dependencecies(Library, tools) will go under the pom.xml file.
+  * It is very powerfull.
+  * We achieve "Project". We can using run and report and stored under the "POM.XML" file
+
+=====================================================================================================  
+ 
+ Maven
+
+   This is JDK and 8 version of Java. It is our source:
+   * <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+     </properties>
+
+  How we Add Selenium to the project:
+   
+  * When add the dependeceies to your project, it will download the "Jar" files into the computer and 
+    store unter the .m2 file. 
+
+  * How to find out .m2 file --> in the search area "^/.m2" and then see your file. (^ --> it is called 
+    tilda)  
+
+  * Once I download dependency I can use over and over again
+
+  * If we not download that dependecies I can't use Selenium
+
+  * 1 - Add Maven Selenium to the project
+    2 - Download the driver for selenium project
+        Chrome -  ChromeDriver
+        Firefox - geckodriver  
+
+  * Copy this implemention and past to the between <properties></properties>
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <dependency>
+       <groupId>org.seleniumhq.selenium</groupId>
+       <artifactId>selenium-java</artifactId>
+       <version>4.0.0</version>
+   </dependency>
+
+
+
+MVNRepository.com --> it is public website to download dependences. When you join the company ask where 
+                      you suppose to get the dependencies from internal resources or external(public) website
+
+
+
+=======================================================================================================
+
+NOTES:
+
+ System.setProperty("webdriver.chrome.driver","chromedriver");
+ WebDriver driver = new ChromeDriver();
+
+ 1 - Webdriver is an interface (parent child)
+     WebDriver driver  = new WebDriver(); --> We can not do it.(It is parent can't create object)
+ 2 - ChromeDriver driver  = new ChromeDriver(); is possible (it is class)
+     WebDriver driver = new ChromeDriver(); (WebDriver parent ChromeDriver child (ChromeDriver extend from WebDriver))
+ 3 - Driver refer to browser
+
+=========================================================================
+
+NOTES: 
+
+1 - How many different ways you can navigate to the page in Selenium?
+    a - driver.get();
+    b - driver.navigate().to();
+2 - Difference between driver.get() and navigate().to()?
+    driver.get() --> waits the page to be loaded then it will be become some other process
+    driver.navigate().to() --> it is not gonna wait whole pages are loaded. So it is faster than .get().
+                               But sometimes it is gonna be migth be failed. 
+
+
+
+
+
+
+
+
+
+
+

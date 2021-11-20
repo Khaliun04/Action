@@ -1,0 +1,146 @@
+SETUP
+1 - New project (Maven)
+2 - po.xml file --> POM (Project Object Model)
+3 - mvnrepository.com
+    
+    Selenium - 4.0.0 -> Current
+    Selenium - 3.14  -> Previous
+
+4 - chrome -> ChromeDriver
+    firefox -> geckodriver.exe
+
+5 - System.setPropery("webdriver.chrome.driver", "chromedriver.exe"); --> starting key (launch)
+    full path --> ("webdriver.chrome.driver", "user/techtorial/download/chromedriver.exe");
+
+    
+    WebDriver driver= new ChromeDriver(); (launch)
+
+    NOTE: Webdriver is an interface and we can instantiate the object using the WEBDRIVER
+          I cant do --> Webdriver driver= new WebDrive(); --> bc it is interface
+
+6 - Driver Methods
+     
+    * driver.get("url"); -> what the page to be load
+    * driver.navigate().to("url");  / back()/forward() / refresh() -> do not wait till page load the 
+      elements.
+      - bc of implimention
+      - navigate also has a methods
+    * driver.getTitle(); --> it returns the string title from the page
+    * driver.getCurrentUrl() --> returns String url.
+    * driver.getPageSource() --> returns the html source from the page
+    * driver.findElement(By.) --> return the WebElement
+      - it is except the object(By.name, By.tag etc)
+      - WebElement header = driver.findElement(By.id("techtorial1"));
+      - WebElement --> header refernce type of the WebElement. I can call WebElement. WebElement it is 
+        interface and use methods.
+
+7 - Locators
+ 
+   * We used to find out the elements and stored to the project. Bc we need to work with elements. It is 
+     connection between our framework and html. So we first have to find out element with locators then I can use(example click it).
+   * If you can't find element using all locators, ask to the deviloper make a unique. It is not hurt 
+     anything
+
+   * We have 8 different locators in Selenium
+
+     id, class, name, linktext, partialLinktext, tagname(a, h1, h2), 
+     xpath, css selector (more advenced)
+     1 - id - is unique value 
+     2 - class attribute but method name By.className("")
+     3 - name
+     4 - tagname
+     5 - linktext (referce the <a tag). It is unique
+     6 - partiallinktext (<a tag) same linktest but I can get part of the text
+     7 - xpath
+         xpath =//tagname[@attribute='value']
+         a - Relative xpath: It starts with double slash//
+            //a--> It will find all the a tags in the html
+            //usa//springfield --> 100
+            //car[@type = 'suv']//brand[@Horizontal Slider]
+         b - Absolute xpath: It starts with single slash/
+            / usa/illinois/springfield --> one
+            /use/texas/springfield --> one
+            /carinventory/car[1]/brand
+
+         NOTE: we can combine relative and absolute xpath
+
+     8 - css selector
+
+         NOTE: LINKTEXT AND PARTIALLINKTEXT: we should have 'a tag' on the page.     
+               *I can use Linktext and partiallinktext with a tag to locate the elements with text.
+
+======================================================================================================
+
+     NOTE: If the webpage has no given value for the 
+           findElement method, it will throw 
+           NoSuchElementsException error.
+     NOTE: If the value has more than one matching element on 
+           the page, the findElement() method will 
+           return first matching element
+
+     NOTE: StaleElementReferenceException: We can get 
+           staleelement exception, when the element was on 
+           the page but my driver is not able to see the element anymore. It means first my value was "tech1" then I clicked that value will changed to "tech2" then when I again click it that is why it can't find my value and give the "StaleElementReferenceException". Bc it is uptaded. 
+           Reason: - Element value attibute value updated
+                   - Page is refreshed
+                   - It will throw StaleElementReferenceException.
+
+           Example reason:
+
+           1 - The element attibute value is updated
+               button = id="tech1"
+               WebElement button = driver.findElement(By.id("tech1"));
+               button.click();
+               id="tech2"
+               button.click();// you will get staleelment exception
+           2 - The page is refreshed
+           3 - After navigating to the other page, if you come back to the orginal and use the element 
+               that you stored before, it will throw staleElementReferenceException.
+           * Solution: you should reinstantiate the webelement one more time.
+
+=========================================================================================================
+
+
+8 - WebElement Methods
+
+    * getText(); --> String of the text from the webelement.
+    * sendKeys(String) --> send given value to the webelement
+    * click(); --> it clicks the element
+    * isSelected() --> return true if the checkbox is selected, otherwise it will return false.
+    * isDisplayed() --> return true if the element on the page
+
+
+===================================================================================================
+
+Review
+
+FindElement - It will find first matching element, return WebElement, throws NoSuchElement
+FindElements - It will find all matching element, return List< Element>, throws empty list.
+
+Xpath
+//tagName
+//tagName[@attributeName = 'attributeValue']
+//tagName[contains(text(),'value')]
+//tagName[contains(@attributeName,'attValue')]
+//tagName[.='value'] or //tagName[text()='value']
+//tagName[last()]
+
+<h1 id='test'>Test</h1>
+we need to use the getAttribute method to get the from the attribute.
+WebElement element = driver.findElement(By.xpath(""))
+element.getAttribute("id");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
